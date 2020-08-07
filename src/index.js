@@ -17,15 +17,15 @@ let todos = [
   }
 ];
 
-function renderTodoApp() {
-  let app = document.querySelector("#app");
-  let h1 = document.createElement("h1");
-  let ul = document.createElement("ul");
-  ul.style = "list-style-type: none";
+let app = document.querySelector("#app");
+let h1 = document.createElement("h1");
+let ul = document.createElement("ul");
+ul.style = "list-style-type: none";
 
+app.appendChild(h1);
+app.appendChild(ul);
+function renderTodoApp() {
   h1.innerText = "todoList";
-  app.appendChild(h1);
-  app.appendChild(ul);
 
   for (let i = 0; i < todos.length; i++) {
     let li = document.createElement("li");
@@ -39,9 +39,8 @@ function renderTodoApp() {
 
  
 }
-renderTodoApp();
 function onButtonClick(){
-  let inputElement = document.querySelector("#form-input").value;
+  let inputElement = document.querySelector("#input").value;
   let task = {completed:false, description:inputElement};
   todos.push(task);
 
