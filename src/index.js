@@ -33,6 +33,7 @@ function renderTodoApp() {
     if (todos[i].completed === true) {
       input = `<input type="checkbox" checked>${todos[i].description}</input>`;
     }
+    
     ul.appendChild(li);
     li.innerHTML += input;
   }
