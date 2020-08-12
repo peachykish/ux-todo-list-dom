@@ -8,42 +8,39 @@ let todos = [
     description: "Drop off wedding invitation",
   },
   {
-      completed: false,
-      description: "Pick up the cake"
+    completed: false,
+    description: "Pick up the cake",
   },
   {
-      completed: false,
-      description: "Call the caterers"
-  }
+    completed: false,
+    description: "Call the caterers",
+  },
 ];
 
-let app = document.querySelector("#app");
 let h1 = document.createElement("h1");
-let ul = document.createElement("ul");
-ul.style = "list-style-type: none";
+let app = document.querySelector("#app");
 
-app.appendChild(h1);
-app.appendChild(ul);
+h1.innerText = "todoList";
+document.body.appendChild(h1);
+
 function renderTodoApp() {
-  h1.innerText = "todoList";
-
+  let listItem = "";
   for (let i = 0; i < todos.length; i++) {
     let li = document.createElement("li");
-    let input = `<input type="checkbox">${todos[i].description}</input>`;
     if (todos[i].completed === true) {
-      input = `<input type="checkbox" checked>${todos[i].description}</input>`;
+      listItem += `<li><input type="checkbox" checked>${todos[i].description}</input></li>`;
+    } else {
+      listItem += `<li><input type="checkbox">${todos[i].description}</input></li>`;
     }
-    
-    ul.appendChild(li);
-    li.innerHTML += input;
   }
-
- 
-}
-function onButtonClick(){
-  let inputElement = document.querySelector("#input").value;
-  let task = {completed:false, description:inputElement};
-  todos.push(task);
-
+  
+  app.innerHTML = `<ul style = "list-style-type: none"
+  >${listItem}</ul>`;
 }
 renderTodoApp();
+function onButtonClick() {
+  let inputElement = document.querySelector("#input").value;
+  let task = { completed: false, description: inputElement };
+  todos.push(task);
+  renderTodoApp();
+}
